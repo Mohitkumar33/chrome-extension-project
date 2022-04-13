@@ -4,8 +4,12 @@ import { useState } from "react";
 const DetailedLanding = ({ userEntered }) => {
   var today = new Date();
   var time = today.getHours() + ":" + today.getMinutes();
-  const [focusMessage, setFocusMessage] = useState("");
-  const [finalMessage, setFinalMessage] = useState("");
+  const [focusMessage, setFocusMessage] = useState(
+    localStorage.getItem("focusOfTheDay")
+  );
+  const [finalMessage, setFinalMessage] = useState(
+    localStorage.getItem("focusOfTheDay")
+  );
   const [focusDone, setFocusDone] = useState(false);
   return (
     <div className="detailed-landing">
@@ -38,7 +42,10 @@ const DetailedLanding = ({ userEntered }) => {
               value={focusMessage}
               onChange={(e) => setFocusMessage(e.target.value)}
               onKeyPress={(e) =>
-                e.key === "Enter" ? setFinalMessage(focusMessage) : null
+                e.key === "Enter"
+                  ? (setFinalMessage(focusMessage),
+                    localStorage.setItem("focusOfTheDay", focusMessage))
+                  : null
               }
             />
           </div>
@@ -49,16 +56,19 @@ const DetailedLanding = ({ userEntered }) => {
               <input
                 type="checkbox"
                 checked={focusDone}
-                onChange={(e) => setFocusDone(e.target.checked)}
+                onChange={
+                  (e) => setFocusDone(e.target.checked)
+                  //   localStorage.setItem("focusStatus", focusDone)
+                }
               />
               {focusDone ? (
                 <div>
                   <label style={{ textDecoration: "line-through" }}>
-                    {finalMessage}
+                    {localStorage.getItem("focusOfTheDay")}
                   </label>
                 </div>
               ) : (
-                <label>{finalMessage}</label>
+                <label>{localStorage.getItem("focusOfTheDay")}</label>
               )}
 
               <svg
@@ -70,6 +80,7 @@ const DetailedLanding = ({ userEntered }) => {
                 strokeWidth="2"
                 onClick={() => {
                   setFinalMessage("");
+                  localStorage.removeItem("focusOfTheDay");
                   setFocusDone(false);
                 }}
               >
@@ -89,6 +100,7 @@ const DetailedLanding = ({ userEntered }) => {
                 onClick={() => {
                   setFocusMessage("");
                   setFinalMessage("");
+                  localStorage.removeItem("focusOfTheDay");
                   setFocusDone(false);
                 }}
               >
