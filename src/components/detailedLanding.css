@@ -44,6 +44,9 @@
   flex-direction: column;
   align-items: center;
 }
+.quote-section:hover * {
+  visibility: visible;
+}
 
 .plus-icon {
   height: 24px;
@@ -83,4 +86,47 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+}
+
+.quote-author {
+  visibility: hidden;
+}
+
+.main-focus-checkbox {
+  font-weight: lighter;
+  font-size: 2rem;
+  display: flex;
+  gap: 20px;
+  width: auto;
+  align-items: center;
+}
+.main-focus-checkbox input {
+  height: 1.2rem;
+  width: 1.2rem;
+  accent-color: rgb(23, 168, 23);
+}
+
+.pencil-icon,
+.trash-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.focus-given {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.focus-ask {
+  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+
+.focus-set,
+.focus-not-set {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
