@@ -1,0 +1,50 @@
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.msg-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.welcome-msg {
+  font-size: 3.5rem;
+  margin-bottom: 3rem;
+  margin-top: -1rem;
+  color: white;
+}
+
+.welcome-input {
+  width: 40%;
+  height: 4rem;
+  border: transparent;
+  border-bottom: 3px solid white;
+  font-size: 2.5rem;
+  text-align: center;
+  outline: none;
+  background-color: transparent;
+  caret-color: white;
+  color: white;
+  font-weight: bold;
+}
+
+.continue-button {
+  height: 2.3rem;
+  width: 6rem;
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  border: transparent;
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: oblique;
+}
+
+button:hover {
+  cursor: pointer;
+}
