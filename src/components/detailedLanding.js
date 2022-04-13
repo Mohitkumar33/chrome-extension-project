@@ -20,17 +20,15 @@ const DetailedLanding = () => {
         </div>
         <div>Weather</div>
       </div>
-      {/* <div className="centered-elements"> */}
-      <div>
+      <div className="time-and-focus">
         <p className="current-time">{time}</p>
-        <p>Good night, Mohit</p>
-        <p>What's your main focus for today?</p>
-        <input type="text" />
+        <p className="greeting">Good night, Mohit</p>
+        <p className="focus-ask">What's your main focus for today?</p>
+        <input type="text" className="focus-input" />
       </div>
       <div className="bottom-row">
         <div>Setting</div>
-        {/* <div className="quote-section"> */}
-        <div>
+        <div className="quote-section">
           <p>Talk does't cook rice</p>
           <p>By a man</p>
         </div>

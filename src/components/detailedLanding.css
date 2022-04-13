@@ -3,28 +3,46 @@
   padding: 0;
   margin: 0;
 }
-.centered-elements {
+
+.time-and-focus {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
+  align-items: center;
+  color: white;
+  gap: 15px;
+}
+
+.current-time {
+  font-size: 7.5rem;
+  margin-top: -4rem;
+}
+
+.greeting {
+  font-size: 3.5rem;
+}
+
+.focus-ask {
+  font-size: 2rem;
+}
+
+.focus-input {
+  width: 90%;
+  height: 3rem;
+  border: transparent;
+  border-bottom: 3px solid white;
+  font-size: 1.5rem;
+  text-align: center;
+  outline: none;
+  background-color: transparent;
+  caret-color: white;
+  color: white;
+  font-weight: bold;
 }
 
 .quote-section {
   display: flex;
-  /* justify-content: center; */
-  /* align-items: lef; */
-  align-items: center;
-  justify-content: end;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-
-  color: white;
-  top: 0;
+  align-items: center;
 }
 
 .plus-icon {
@@ -46,10 +64,23 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  color: white;
 }
 .bottom-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  color: white;
+}
+
+.event-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.event-and-search {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
