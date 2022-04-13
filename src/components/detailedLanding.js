@@ -10,7 +10,9 @@ const DetailedLanding = ({ userEntered }) => {
   const [finalMessage, setFinalMessage] = useState(
     localStorage.getItem("focusOfTheDay")
   );
-  const [focusDone, setFocusDone] = useState(false);
+  const [focusDone, setFocusDone] = useState(
+    localStorage.getItem("focusStatus") === "true" ? true : false
+  );
   return (
     <div className="detailed-landing">
       <div className="top-row">
@@ -56,10 +58,10 @@ const DetailedLanding = ({ userEntered }) => {
               <input
                 type="checkbox"
                 checked={focusDone}
-                onChange={
-                  (e) => setFocusDone(e.target.checked)
-                  //   localStorage.setItem("focusStatus", focusDone)
-                }
+                onChange={(e) => (
+                  setFocusDone(e.target.checked),
+                  localStorage.setItem("focusStatus", e.target.checked)
+                )}
               />
               {focusDone ? (
                 <div>
@@ -81,6 +83,7 @@ const DetailedLanding = ({ userEntered }) => {
                 onClick={() => {
                   setFinalMessage("");
                   localStorage.removeItem("focusOfTheDay");
+                  localStorage.removeItem("focusStatus");
                   setFocusDone(false);
                 }}
               >
@@ -101,6 +104,7 @@ const DetailedLanding = ({ userEntered }) => {
                   setFocusMessage("");
                   setFinalMessage("");
                   localStorage.removeItem("focusOfTheDay");
+                  localStorage.removeItem("focusStatus");
                   setFocusDone(false);
                 }}
               >
