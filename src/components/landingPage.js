@@ -1,5 +1,8 @@
+import { useState } from "react";
 import "./landingPage.css";
-const LandingPage = () => {
+
+const LandingPage = ({ setUserEntered }) => {
+  const [userName, setUserName] = useState("");
   return (
     <div
       className="msg-input"
@@ -9,8 +12,20 @@ const LandingPage = () => {
       }}
     >
       <h1 className="welcome-msg">Hello, what's your name?</h1>
-      <input className="welcome-input" type="text" />
-      <button className="continue-button">Continue</button>
+      <input
+        className="welcome-input"
+        type="text"
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
+      />
+      <button
+        className="continue-button"
+        onClick={() => (
+          localStorage.setItem("user", userName), setUserEntered(userName)
+        )}
+      >
+        Continue
+      </button>
     </div>
   );
 };
