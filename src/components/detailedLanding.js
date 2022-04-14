@@ -2,13 +2,17 @@ import "./detailedLanding.css";
 import { useState } from "react";
 
 const DetailedLanding = ({ userEntered }) => {
-  var today = new Date();
-  var time = today.getHours() + ":" + today.getMinutes();
+  let today = new Date();
+  let time = today.getHours() + ":" + today.getMinutes();
   const [focusMessage, setFocusMessage] = useState(
     localStorage.getItem("focusOfTheDay")
+      ? localStorage.getItem("focusOfTheDay")
+      : ""
   );
   const [finalMessage, setFinalMessage] = useState(
     localStorage.getItem("focusOfTheDay")
+      ? localStorage.getItem("focusOfTheDay")
+      : ""
   );
   const [focusDone, setFocusDone] = useState(
     localStorage.getItem("focusStatus") === "true" ? true : false
@@ -47,7 +51,7 @@ const DetailedLanding = ({ userEntered }) => {
                 e.key === "Enter"
                   ? (setFinalMessage(focusMessage),
                     localStorage.setItem("focusOfTheDay", focusMessage))
-                  : null
+                  : ""
               }
             />
           </div>
