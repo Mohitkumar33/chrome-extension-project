@@ -17,6 +17,11 @@ const LandingPage = ({ setUserEntered }) => {
         type="text"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
+        onKeyPress={(e) =>
+          e.key === "Enter"
+            ? (localStorage.setItem("user", userName), setUserEntered(userName))
+            : null
+        }
       />
       <button
         className="continue-button"
