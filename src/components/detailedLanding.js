@@ -1,6 +1,7 @@
 import "./detailedLanding.css";
 import { useState } from "react";
 import { Todo } from "./small components/todo";
+import { GoogleSearch } from "./small components/googleSearch";
 
 const DetailedLanding = ({ userEntered }) => {
   const [showTodo, setShowTodo] = useState(false);
@@ -33,7 +34,9 @@ const DetailedLanding = ({ userEntered }) => {
             </svg>
             <p>Add Event</p>
           </div>
-          <div>Google search</div>
+          <div>
+            <GoogleSearch />
+          </div>
         </div>
         <div>Weather</div>
       </div>
