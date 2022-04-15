@@ -22,7 +22,8 @@ code {
 }
 body {
   position: fixed;
-  /* background: url("https://res.cloudinary.com/dbfzfqfhl/image/upload/v1649858996/ecom%20item%20images/fredrik-solli-wandem-7wUGrYL6B9c-unsplash_kqvmac.jpg"); */
-  object-fit: cover;
-  background-color: rgb(88, 121, 39);
+  background: url("https://source.unsplash.com/random/?nature/1366×768");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* object-fit: cover; */
 }

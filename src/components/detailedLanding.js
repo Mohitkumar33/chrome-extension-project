@@ -1,9 +1,14 @@
 import "./detailedLanding.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Todo } from "./small components/todo";
 import { GoogleSearch } from "./small components/googleSearch";
+import axios from "axios";
 
 const DetailedLanding = ({ userEntered }) => {
+  const [quote, setQuote] = useState({
+    quoteOfTheDay: "",
+    authorOfTheQuote: "",
+  });
   const [showTodo, setShowTodo] = useState(false);
   let today = new Date();
   let time = today.getHours() + ":" + today.getMinutes();
@@ -20,6 +25,14 @@ const DetailedLanding = ({ userEntered }) => {
   const [focusDone, setFocusDone] = useState(
     localStorage.getItem("focusStatus") === "true" ? true : false
   );
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get(
+        "https://api.quotable.io/random?maxLength=50"
+      );
+      setQuote({ quoteOfTheDay: data.content, authorOfTheQuote: data.author });
+    })();
+  }, []);
   return (
     <div className="detailed-landing">
       <div className="top-row">
@@ -135,8 +148,8 @@ const DetailedLanding = ({ userEntered }) => {
       <div className="bottom-row">
         <div>Setting</div>
         <div className="quote-section">
-          <p>Talk does't cook rice</p>
-          <p className="quote-author">By a man</p>
+          <p>{quote.quoteOfTheDay}</p>
+          <p className="quote-author">{quote.authorOfTheQuote}</p>
         </div>
         <div className="todo-dialog">
           <div onClick={() => setShowTodo((prev) => !prev)}>Todo</div>
