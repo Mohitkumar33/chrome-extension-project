@@ -1,0 +1,30 @@
+.search-icon {
+  height: 24px;
+  width: 24px;
+  color: white;
+  margin-left: 5px;
+}
+
+.submit-search-icon {
+  background-color: transparent;
+  border: transparent;
+}
+
+.google-search-align {
+  display: flex;
+}
+
+.search-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  padding-left: 10px;
+  font-size: 15px;
+  caret-color: white;
+}
+
+.search-input::placeholder {
+  color: white;
+  padding-left: 2px;
+}
