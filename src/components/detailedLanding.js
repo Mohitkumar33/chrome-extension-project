@@ -1,6 +1,5 @@
 import "./detailedLanding.css";
 import { useState } from "react";
-
 const DetailedLanding = ({ userEntered }) => {
   let today = new Date();
   let time = today.getHours() + ":" + today.getMinutes();
