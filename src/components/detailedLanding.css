@@ -62,6 +62,9 @@
   justify-content: space-between;
   width: 100%;
   color: white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
 }
 .bottom-row {
   display: flex;
@@ -69,6 +72,8 @@
   justify-content: space-between;
   width: 100%;
   color: white;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .event-section {
@@ -123,4 +128,16 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+.todo-dialog {
+  position: relative;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
+.todo-dialog-setter {
+  position: absolute;
+  left: -13rem;
+  bottom: 3rem;
 }

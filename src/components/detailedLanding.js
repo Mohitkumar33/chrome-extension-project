@@ -1,6 +1,11 @@
 import "./detailedLanding.css";
 import { useState } from "react";
+import { Todo } from "./small components/todo";
+// import { useTodos } from "../context/todo-context";
+
 const DetailedLanding = ({ userEntered }) => {
+  const [showTodo, setShowTodo] = useState(false);
+  // const { todosList } = useTodos();
   let today = new Date();
   let time = today.getHours() + ":" + today.getMinutes();
   const [focusMessage, setFocusMessage] = useState(
@@ -132,7 +137,17 @@ const DetailedLanding = ({ userEntered }) => {
           <p>Talk does't cook rice</p>
           <p className="quote-author">By a man</p>
         </div>
-        <div>Todo</div>
+        <div className="todo-dialog">
+          <div onClick={() => setShowTodo((prev) => !prev)}>Todo</div>
+          <div
+            className="todo-dialog-setter"
+            style={{
+              display: showTodo ? "block" : "none",
+            }}
+          >
+            <Todo setShowTodo={setShowTodo} />
+          </div>
+        </div>
       </div>
     </div>
   );

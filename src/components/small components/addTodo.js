@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTodos } from "../../context/todo-context";
 import { TodoAdded } from "./todoAdded";
 import { v4 as uuid } from "uuid";
-const AddTodo = () => {
+const AddTodo = ({ setShowTodo }) => {
   const { todosList, setTodosList } = useTodos();
   const [todoInput, setTodoInput] = useState("");
   return (
@@ -13,9 +13,10 @@ const AddTodo = () => {
             <p>Today</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="down-arrow"
+              className="down-arrow"
               viewBox="0 0 20 20"
               fill="currentColor"
+              onClick={() => setShowTodo((prev) => !prev)}
             >
               <path
                 fillRule="evenodd"
@@ -42,7 +43,7 @@ const AddTodo = () => {
           />
         </div>
       ) : (
-        <TodoAdded />
+        <TodoAdded setShowTodo={setShowTodo} />
       )}
     </>
   );

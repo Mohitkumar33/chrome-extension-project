@@ -2,7 +2,7 @@ import { useTodos } from "../../context/todo-context";
 import { v4 as uuid } from "uuid";
 import { useState } from "react";
 
-const TodoAdded = () => {
+const TodoAdded = ({ setShowTodo }) => {
   const { todosList, setTodosList } = useTodos();
   const [todoInput, setTodoInput] = useState("");
   const deleteTask = (itemId) => {
@@ -21,9 +21,10 @@ const TodoAdded = () => {
         <p>Today</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="down-arrow"
+          className="down-arrow"
           viewBox="0 0 20 20"
           fill="currentColor"
+          onClick={() => setShowTodo((prev) => !prev)}
         >
           <path
             fillRule="evenodd"
@@ -35,7 +36,7 @@ const TodoAdded = () => {
 
       {todosList.map((item) => {
         return (
-          <div className="single-todo">
+          <div className="single-todo" key={item.id}>
             <label>
               <input
                 type="checkbox"
@@ -54,7 +55,7 @@ const TodoAdded = () => {
             </label>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="cross-icon"
+              className="cross-icon"
               viewBox="0 0 20 20"
               fill="currentColor"
               onClick={() => deleteTask(item.id)}
