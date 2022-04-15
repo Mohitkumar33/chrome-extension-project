@@ -15,8 +15,14 @@ code {
     monospace;
 }
 
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 body {
   position: fixed;
-  background: url("https://res.cloudinary.com/dbfzfqfhl/image/upload/v1649858996/ecom%20item%20images/fredrik-solli-wandem-7wUGrYL6B9c-unsplash_kqvmac.jpg");
+  /* background: url("https://res.cloudinary.com/dbfzfqfhl/image/upload/v1649858996/ecom%20item%20images/fredrik-solli-wandem-7wUGrYL6B9c-unsplash_kqvmac.jpg"); */
   object-fit: cover;
+  background-color: rgb(88, 121, 39);
 }
