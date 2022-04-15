@@ -4,7 +4,7 @@ const GoogleSearch = () => {
     <div>
       <form
         method="get"
-        action="http://www.google.com/search"
+        action="https://www.google.com/search"
         className="google-search-align"
       >
         <input
