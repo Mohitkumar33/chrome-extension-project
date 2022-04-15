@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTodos } from "../../context/todo-context";
 import { TodoAdded } from "./todoAdded";
 import { v4 as uuid } from "uuid";
 const AddTodo = ({ setShowTodo }) => {
   const { todosList, setTodosList } = useTodos();
   const [todoInput, setTodoInput] = useState("");
+  useEffect(() => {
+    localStorage.setItem("todoTasks", JSON.stringify(todosList));
+  }, [todosList]);
   return (
     <>
       {todosList.length === 0 ? (
@@ -34,10 +37,11 @@ const AddTodo = ({ setShowTodo }) => {
             onChange={(e) => setTodoInput(e.target.value)}
             onKeyPress={(e) =>
               e.key === "Enter"
-                ? setTodosList([
+                ? (setTodosList([
                     ...todosList,
                     { id: uuid(), todoNote: todoInput, isDone: false },
-                  ])
+                  ]),
+                  setTodoInput(""))
                 : undefined
             }
           />

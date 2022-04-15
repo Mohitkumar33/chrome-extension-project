@@ -7,10 +7,10 @@ const Todo = ({ setShowTodo }) => {
   const { todosList } = useTodos();
   return (
     <div>
-      {todosList.length >= 0 ? (
+      {todosList.length > 0 ? (
         <AddTodo setShowTodo={setShowTodo} />
       ) : (
-        <NoTodos />
+        <NoTodos setShowTodo={setShowTodo} />
       )}
     </div>
   );

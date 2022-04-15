@@ -1,6 +1,6 @@
 import { useTodos } from "../../context/todo-context";
 import { v4 as uuid } from "uuid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const TodoAdded = ({ setShowTodo }) => {
   const { todosList, setTodosList } = useTodos();
@@ -15,6 +15,9 @@ const TodoAdded = ({ setShowTodo }) => {
       )
     );
   };
+  useEffect(() => {
+    localStorage.setItem("todoTasks", JSON.stringify(todosList));
+  }, [todosList]);
   return (
     <div className="todo-added">
       <div className="today-arrow">
@@ -82,7 +85,8 @@ const TodoAdded = ({ setShowTodo }) => {
                 ...todosList,
                 { id: uuid(), todoNote: todoInput, isDone: false },
               ]),
-              setTodoInput(""))
+              setTodoInput(""),
+              localStorage.setItem("todoTasks", JSON.stringify(todosList)))
             : undefined
         }
       />

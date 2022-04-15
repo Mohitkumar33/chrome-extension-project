@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTodos } from "../../context/todo-context";
 import { AddTodo } from "./addTodo";
 
-const NoTodos = () => {
+const NoTodos = ({ setShowTodo }) => {
+  const { todosList } = useTodos();
   const [component2, setComponent2] = useState(false);
+  useEffect(() => {
+    localStorage.setItem("todoTasks", JSON.stringify(todosList));
+  }, [todosList]);
   return (
     <>
       {!component2 ? (
@@ -11,7 +16,7 @@ const NoTodos = () => {
           <button onClick={() => setComponent2(true)}>Add Todo</button>
         </div>
       ) : (
-        <AddTodo />
+        <AddTodo setShowTodo={setShowTodo} />
       )}
     </>
   );
