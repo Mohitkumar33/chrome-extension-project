@@ -6,6 +6,7 @@ import axios from "axios";
 import { WeatherDetails } from "./small components/weatherDetails";
 
 const DetailedLanding = ({ userEntered }) => {
+  const [showSetting, setShowSetting] = useState(false);
   const [weatherInfo, setWeatherInfo] = useState({
     currentTemp: "",
     city: "",
@@ -196,7 +197,17 @@ const DetailedLanding = ({ userEntered }) => {
         )}
       </div>
       <div className="bottom-row">
-        <div>Setting</div>
+        <div
+          className="reset-setting"
+          onClick={() => setShowSetting((prev) => !prev)}
+        >
+          Setting
+          {showSetting ? (
+            <button className="reset-all" onClick={(e) => e.stopPropagation()}>
+              Reset All
+            </button>
+          ) : null}
+        </div>
         <div className="quote-section">
           <p>{quote.quoteOfTheDay}</p>
           <p className="quote-author">{quote.authorOfTheQuote}</p>
