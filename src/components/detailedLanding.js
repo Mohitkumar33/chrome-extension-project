@@ -48,7 +48,7 @@ const DetailedLanding = ({ userEntered }) => {
   useEffect(() => {
     (async () => {
       const { data } = await axios.get(
-        "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
+        "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
       );
       setWeatherInfo({
         currentTemp: data.main.temp,
@@ -87,7 +87,7 @@ const DetailedLanding = ({ userEntered }) => {
         >
           <div>
             <img
-              src={`http://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
+              src={`https://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
               alt={weatherInfo.weatherDesc}
               className="weather-icon"
             />
