@@ -3,8 +3,20 @@ import { useEffect, useState } from "react";
 import { Todo } from "./small components/todo";
 import { GoogleSearch } from "./small components/googleSearch";
 import axios from "axios";
+import { WeatherDetails } from "./small components/weatherDetails";
 
 const DetailedLanding = ({ userEntered }) => {
+  const [weatherInfo, setWeatherInfo] = useState({
+    currentTemp: "",
+    city: "",
+    weatherIcon: "",
+    weatherDesc: "",
+    maxTemp: "",
+    minTem: "",
+    feelsLike: "",
+    humidity: "",
+  });
+  const [showWeather, setShowWeather] = useState(false);
   const [quote, setQuote] = useState({
     quoteOfTheDay: "",
     authorOfTheQuote: "",
@@ -33,6 +45,23 @@ const DetailedLanding = ({ userEntered }) => {
       setQuote({ quoteOfTheDay: data.content, authorOfTheQuote: data.author });
     })();
   }, []);
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get(
+        "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
+      );
+      setWeatherInfo({
+        currentTemp: data.main.temp,
+        city: data.name,
+        weatherIcon: data.weather[0].icon,
+        weatherDesc: data.weather[0].description,
+        maxTemp: data.main.temp_max,
+        minTem: data.main.temp_min,
+        feelsLike: data.main.feels_like,
+        humidity: data.main.humidity,
+      });
+    })();
+  }, []);
   return (
     <div className="detailed-landing">
       <div className="top-row">
@@ -51,7 +80,28 @@ const DetailedLanding = ({ userEntered }) => {
             <GoogleSearch />
           </div>
         </div>
-        <div>Weather</div>
+
+        <div
+          className="all-weather"
+          onClick={() => setShowWeather((prev) => !prev)}
+        >
+          <div>
+            <img
+              src={`http://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
+              alt={weatherInfo.weatherDesc}
+              className="weather-icon"
+            />
+          </div>
+          <div className="city-temp">
+            <div>{weatherInfo.currentTemp}°C</div>
+            <div>{weatherInfo.city}</div>
+          </div>
+          {showWeather ? (
+            <div className="weather-indepth">
+              <WeatherDetails weatherInfo={weatherInfo} />
+            </div>
+          ) : null}
+        </div>
       </div>
       <div className="time-and-focus">
         <p className="current-time">{time}</p>

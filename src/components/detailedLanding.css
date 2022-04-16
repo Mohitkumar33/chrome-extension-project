@@ -64,7 +64,7 @@
   color: white;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 1rem;
+  padding-top: 0.6rem;
 }
 .bottom-row {
   display: flex;
@@ -83,7 +83,7 @@
 }
 .event-and-search {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   gap: 2rem;
 }
 
@@ -140,4 +140,38 @@
   position: absolute;
   left: -13rem;
   bottom: 3rem;
+}
+
+.all-weather {
+  display: flex;
+  position: relative;
+  /* gap: 1rem; */
+}
+
+.city-temp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2rem;
+  gap: 5px;
+}
+
+.weather-icon {
+  height: 90px;
+  width: 90px;
+  margin-top: -20px;
+}
+
+.weather-indepth {
+  position: absolute;
+  top: 4rem;
+  right: 0;
+}
+
+.all-weather:hover {
+  cursor: pointer;
+}
+
+.todo-dialog:hover {
+  cursor: pointer;
 }
