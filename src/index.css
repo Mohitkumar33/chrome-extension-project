@@ -20,10 +20,3 @@ code {
   padding: 0;
   margin: 0;
 }
-body {
-  position: fixed;
-  background: url("https://source.unsplash.com/random/?nature/1366×768");
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* object-fit: cover; */
-}
