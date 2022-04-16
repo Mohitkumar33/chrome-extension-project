@@ -175,3 +175,22 @@
 .todo-dialog:hover {
   cursor: pointer;
 }
+.reset-setting {
+  position: relative;
+  font-size: 1.3rem;
+}
+.reset-setting:hover {
+  cursor: pointer;
+}
+
+.reset-all {
+  position: absolute;
+  bottom: 2.6rem;
+  left: 2rem;
+  width: 5rem;
+  height: 1.8rem;
+  background-color: rgba(0, 0, 0, 0.637);
+  color: white;
+  border-radius: 8px;
+  border: transparent;
+}
