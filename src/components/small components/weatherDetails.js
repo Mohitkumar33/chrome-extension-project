@@ -17,7 +17,7 @@ const WeatherDetails = ({ weatherInfo }) => {
       <p className="desc">{weatherDesc}</p>
       <div className="icon-and-info">
         <img
-          src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
           alt={weatherInfo.weatherDesc}
           className="weather-icon-detailed"
         />
