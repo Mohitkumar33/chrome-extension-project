@@ -4,9 +4,11 @@ import { Todo } from "./small components/todo";
 import { GoogleSearch } from "./small components/googleSearch";
 import axios from "axios";
 import { WeatherDetails } from "./small components/weatherDetails";
+import { ResetWarning } from "./small components/resetWarning";
 
-const DetailedLanding = ({ userEntered }) => {
+const DetailedLanding = ({ userEntered, setUserEntered }) => {
   const [showSetting, setShowSetting] = useState(false);
+  const [resetWarning, setResetWarning] = useState(false);
   const [weatherInfo, setWeatherInfo] = useState({
     currentTemp: "",
     city: "",
@@ -65,6 +67,13 @@ const DetailedLanding = ({ userEntered }) => {
   }, []);
   return (
     <div className="detailed-landing">
+      {resetWarning ? (
+        <ResetWarning
+          setResetWarning={setResetWarning}
+          setShowSetting={setShowSetting}
+          setUserEntered={setUserEntered}
+        />
+      ) : null}
       <div className="top-row">
         <div className="event-and-search">
           <div className="event-section">
@@ -203,7 +212,13 @@ const DetailedLanding = ({ userEntered }) => {
         >
           Setting
           {showSetting ? (
-            <button className="reset-all" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="reset-all"
+              onClick={(e) => {
+                e.stopPropagation();
+                setResetWarning(true);
+              }}
+            >
               Reset All
             </button>
           ) : null}
