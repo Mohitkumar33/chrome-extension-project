@@ -5,9 +5,15 @@ import { v4 as uuid } from "uuid";
 const AddTodo = ({ setShowTodo }) => {
   const { todosList, setTodosList } = useTodos();
   const [todoInput, setTodoInput] = useState("");
+  // const searchInput = useRef();
   useEffect(() => {
     localStorage.setItem("todoTasks", JSON.stringify(todosList));
   }, [todosList]);
+  // useEffect(() => {
+  //   // current property is refered to input element
+  //   console.log(searchInput);
+  //   searchInput.current.focus();
+  // }, []);
   return (
     <>
       {todosList.length === 0 ? (
@@ -33,6 +39,8 @@ const AddTodo = ({ setShowTodo }) => {
             type="text"
             placeholder="New Todo"
             className="write-todo"
+            // ref={searchInput}
+            ref={(input) => (input ? input.focus() : null)} // focus is coming on input but we are unable to edit any other input on the screen
             value={todoInput}
             onChange={(e) => setTodoInput(e.target.value)}
             onKeyPress={(e) =>
