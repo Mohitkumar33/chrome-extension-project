@@ -78,7 +78,6 @@ const TodoAdded = ({ setShowTodo }) => {
         placeholder="New Todo"
         className="write-todo"
         value={todoInput}
-        ref={(input) => input && input.focus()}
         onChange={(e) => setTodoInput(e.target.value)}
         onKeyPress={(e) =>
           e.key === "Enter"
