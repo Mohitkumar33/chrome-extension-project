@@ -1,0 +1,40 @@
+.reset-background {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.24);
+  color: white;
+  position: absolute;
+  z-index: 1;
+}
+
+.reset-warning {
+  height: 11rem;
+  width: 16rem;
+  background-color: rgba(0, 0, 0, 0.692);
+  border-radius: 8px;
+  padding: 1rem;
+  position: absolute;
+  left: 3rem;
+  bottom: 3.5rem;
+}
+
+.yes-warning,
+.no-warning {
+  height: 1.5rem;
+  width: 2.5rem;
+  margin-top: 1rem;
+  margin-right: 10px;
+}
+
+.yes-warning {
+  border: 1px solid white;
+  color: white;
+  background-color: transparent;
+  border-radius: 2px;
+}
+.no-warning {
+  font-weight: 700;
+  font-size: 1rem;
+  border: 1px solid white;
+  border-radius: 2px;
+}
