@@ -84,3 +84,24 @@
   width: 14px;
   margin-right: 10px;
 }
+
+.todo-note {
+  font-weight: 300;
+}
+
+.all-todo-notes {
+  overflow: auto;
+  max-height: 25rem;
+}
+.all-todo-notes::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+.all-todo-notes::-webkit-scrollbar-track {
+  background-color: rgb(66, 65, 65);
+}
+
+.all-todo-notes::-webkit-scrollbar-thumb {
+  background-color: rgb(140, 150, 140);
+  border-radius: 10px;
+}
