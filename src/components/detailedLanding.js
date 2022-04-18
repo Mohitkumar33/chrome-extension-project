@@ -123,6 +123,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
             <input
               type="text"
               className="focus-input"
+              // ref={(input) => (input ? input.focus() : null)}
               value={focusMessage}
               onChange={(e) => setFocusMessage(e.target.value)}
               onKeyPress={(e) =>

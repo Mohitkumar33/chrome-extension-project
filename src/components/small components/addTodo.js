@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useTodos } from "../../context/todo-context";
 import { TodoAdded } from "./todoAdded";
 import { v4 as uuid } from "uuid";
@@ -6,9 +6,13 @@ const AddTodo = ({ setShowTodo }) => {
   const { todosList, setTodosList } = useTodos();
   const [todoInput, setTodoInput] = useState("");
   // const searchInput = useRef();
+  const focusTodoInput = useRef();
   useEffect(() => {
     localStorage.setItem("todoTasks", JSON.stringify(todosList));
   }, [todosList]);
+  useEffect(() => {
+    if (focusTodoInput.current) focusTodoInput.current.focus();
+  }, [focusTodoInput]);
   // useEffect(() => {
   //   // current property is refered to input element
   //   console.log(searchInput);
@@ -39,8 +43,9 @@ const AddTodo = ({ setShowTodo }) => {
             type="text"
             placeholder="New Todo"
             className="write-todo"
+            ref={focusTodoInput}
             // ref={searchInput}
-            ref={(input) => (input ? input.focus() : null)} // focus is coming on input but we are unable to edit any other input on the screen
+            // ref={(input) => (input ? input.focus() : null)} // focus is coming on input but we are unable to edit any other input on the screen
             value={todoInput}
             onChange={(e) => setTodoInput(e.target.value)}
             onKeyPress={(e) =>

@@ -1,10 +1,11 @@
 import { useTodos } from "../../context/todo-context";
 import { v4 as uuid } from "uuid";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const TodoAdded = ({ setShowTodo }) => {
   const { todosList, setTodosList } = useTodos();
   const [todoInput, setTodoInput] = useState("");
+  const focusTodoInput = useRef();
   const deleteTask = (itemId) => {
     setTodosList(todosList.filter((item) => item.id !== itemId));
   };
@@ -18,6 +19,9 @@ const TodoAdded = ({ setShowTodo }) => {
   useEffect(() => {
     localStorage.setItem("todoTasks", JSON.stringify(todosList));
   }, [todosList]);
+  useEffect(() => {
+    if (focusTodoInput.current) focusTodoInput.current.focus();
+  }, [focusTodoInput]);
   return (
     <div className="todo-added">
       <div className="today-arrow">
@@ -78,6 +82,7 @@ const TodoAdded = ({ setShowTodo }) => {
         placeholder="New Todo"
         className="write-todo"
         value={todoInput}
+        ref={focusTodoInput}
         onChange={(e) => setTodoInput(e.target.value)}
         onKeyPress={(e) =>
           e.key === "Enter"
