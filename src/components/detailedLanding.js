@@ -26,7 +26,25 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   });
   const [showTodo, setShowTodo] = useState(false);
   let today = new Date();
-  let time = today.getHours() + ":" + today.getMinutes();
+  let hours = today.getHours();
+  let minutes = today.getMinutes();
+  if (minutes >= 0 && minutes <= 9) {
+    minutes = `0${minutes}`;
+  }
+  let time = `${hours}:${minutes}`;
+  const [currentTime, setCurrentTime] = useState(time);
+  setInterval(() => {
+    today = new Date();
+    hours = today.getHours();
+    minutes = today.getMinutes();
+    if (minutes >= 0 && minutes <= 9) {
+      minutes = `0${minutes}`;
+    }
+    time = `${hours}:${minutes}`;
+    setCurrentTime(time);
+  }, 1000);
+  useEffect(() => {}, [currentTime]);
+
   const [focusMessage, setFocusMessage] = useState(
     localStorage.getItem("focusOfTheDay")
       ? localStorage.getItem("focusOfTheDay")
@@ -114,7 +132,26 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
         </div>
       </div>
       <div className="time-and-focus">
-        <p className="current-time">{time}</p>
+        <div className="time-display">
+          <p className="current-time">
+            {currentTime}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="time-toggle"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+              />
+            </svg>
+          </p>
+        </div>
+
         <p className="greeting">Good night, {userEntered}</p>
 
         {!finalMessage ? (

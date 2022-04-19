@@ -9,6 +9,8 @@
 .current-time {
   font-size: 7.5rem;
   margin-top: -4rem;
+  display: flex;
+  align-items: center;
 }
 
 .greeting {
@@ -193,4 +195,17 @@
   color: white;
   border-radius: 8px;
   border: transparent;
+}
+
+.time-toggle {
+  fill: white;
+  height: 35px;
+  width: 35px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.411);
+  border-radius: 50%;
+  visibility: hidden;
+}
+.time-display:hover .time-toggle {
+  visibility: visible;
 }

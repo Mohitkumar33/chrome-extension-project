@@ -12,7 +12,7 @@ const WeatherDetails = ({ weatherInfo }) => {
     humidity,
   } = weatherInfo;
   return (
-    <div className="detailed-weather-box">
+    <div className="detailed-weather-box" onClick={(e) => e.stopPropagation()}>
       <p className="city">{city}</p>
       <p className="desc">{weatherDesc}</p>
       <div className="icon-and-info">
