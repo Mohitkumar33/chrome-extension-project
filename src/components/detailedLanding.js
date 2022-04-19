@@ -7,7 +7,9 @@ import { WeatherDetails } from "./small components/weatherDetails";
 import { ResetWarning } from "./small components/resetWarning";
 
 const DetailedLanding = ({ userEntered, setUserEntered }) => {
-  const [show12Hour, setShow12Hour] = useState(false);
+  const [show12Hour, setShow12Hour] = useState(
+    localStorage.getItem("amOrPm") === "true" ? true : false
+  );
 
   const [showSetting, setShowSetting] = useState(false);
   const [resetWarning, setResetWarning] = useState(false);
@@ -157,7 +159,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
                 {hours >= 0 && hours < 12 ? (
                   <span style={{ fontSize: "2rem" }}>am</span>
                 ) : (
-                  <span style={{ fontSize: "1rem" }}>pm</span>
+                  <span style={{ fontSize: "2rem" }}>pm</span>
                 )}
               </span>
             ) : (
@@ -171,7 +173,10 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
               viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth="2"
-              onClick={() => setShow12Hour((prev) => !prev)}
+              onClick={() => {
+                setShow12Hour((prev) => !prev);
+                localStorage.setItem("amOrPm", !show12Hour);
+              }}
             >
               <path
                 strokeLinecap="round"
