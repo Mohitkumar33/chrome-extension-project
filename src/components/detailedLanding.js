@@ -62,7 +62,6 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
     setCurrentTime(time);
   }, 1000);
   useEffect(() => {}, [currentTime]);
-  console.log(minutes);
 
   const [focusMessage, setFocusMessage] = useState(
     localStorage.getItem("focusOfTheDay")
@@ -165,7 +164,6 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
             ) : (
               <span>{currentTime}</span>
             )}
-            {/* {currentTime} */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="time-toggle"
