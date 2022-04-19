@@ -7,6 +7,8 @@ import { WeatherDetails } from "./small components/weatherDetails";
 import { ResetWarning } from "./small components/resetWarning";
 
 const DetailedLanding = ({ userEntered, setUserEntered }) => {
+  const [show12Hour, setShow12Hour] = useState(false);
+
   const [showSetting, setShowSetting] = useState(false);
   const [resetWarning, setResetWarning] = useState(false);
   const [weatherInfo, setWeatherInfo] = useState({
@@ -33,6 +35,13 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   }
   let time = `${hours}:${minutes}`;
   const [currentTime, setCurrentTime] = useState(time);
+  let time12Hour = "";
+  if (hours > 12 && hours < 24) {
+    time12Hour = `${hours - 12}:${minutes}`;
+  } else {
+    time12Hour = `${hours}:${minutes}`;
+  }
+  const [twelveHourTime, setTwelveHourTime] = useState(time12Hour);
   setInterval(() => {
     today = new Date();
     hours = today.getHours();
@@ -41,9 +50,17 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
       minutes = `0${minutes}`;
     }
     time = `${hours}:${minutes}`;
+
+    if (hours > 12 && hours < 24) {
+      time12Hour = `${hours - 12}:${minutes}`;
+    } else {
+      time12Hour = `${hours}:${minutes}`;
+    }
+    setTwelveHourTime(time12Hour);
     setCurrentTime(time);
   }, 1000);
   useEffect(() => {}, [currentTime]);
+  console.log(minutes);
 
   const [focusMessage, setFocusMessage] = useState(
     localStorage.getItem("focusOfTheDay")
@@ -134,7 +151,19 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
       <div className="time-and-focus">
         <div className="time-display">
           <p className="current-time">
-            {currentTime}
+            {show12Hour ? (
+              <span>
+                {twelveHourTime}
+                {hours >= 0 && hours < 12 ? (
+                  <span style={{ fontSize: "2rem" }}>am</span>
+                ) : (
+                  <span style={{ fontSize: "1rem" }}>pm</span>
+                )}
+              </span>
+            ) : (
+              <span>{currentTime}</span>
+            )}
+            {/* {currentTime} */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="time-toggle"
@@ -142,6 +171,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
               viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth="2"
+              onClick={() => setShow12Hour((prev) => !prev)}
             >
               <path
                 strokeLinecap="round"
