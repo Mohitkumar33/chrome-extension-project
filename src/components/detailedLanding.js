@@ -101,6 +101,14 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
       });
     })();
   }, []);
+  let greetingMsg = "";
+  if (hours >= 5 && hours < 12) {
+    greetingMsg = "Good Morning";
+  } else if (hours >= 12 && hours < 17) {
+    greetingMsg = "Good Afternoon";
+  } else {
+    greetingMsg = "Good Evening";
+  }
   return (
     <div className="detailed-landing">
       {resetWarning ? (
@@ -185,7 +193,9 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
           </p>
         </div>
 
-        <p className="greeting">Good night, {userEntered}</p>
+        <p className="greeting">
+          {greetingMsg}, {userEntered}
+        </p>
 
         {!finalMessage ? (
           <div className="focus-not-set">
