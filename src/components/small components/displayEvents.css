@@ -57,3 +57,7 @@
 .date-time {
   font-size: 13px;
 }
+
+.delete-event:hover {
+  cursor: pointer;
+}

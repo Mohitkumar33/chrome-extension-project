@@ -30,6 +30,8 @@ const AddEvents = ({ setShowCreateEvent }) => {
             { id: uuid(), description: descInput, date: dateTimeInput },
           ]);
           localStorage.setItem("allTheEvents", JSON.stringify(events));
+          setDescInput("");
+          setDateTimeInput("");
         }}
       >
         Create
