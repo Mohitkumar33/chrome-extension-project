@@ -95,7 +95,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   useEffect(() => {
     (async () => {
       const { data } = await axios.get(
-        "https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
+        "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
       );
       setWeatherInfo({
         currentTemp: data.main.temp,
