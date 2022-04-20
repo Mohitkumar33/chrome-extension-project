@@ -87,7 +87,7 @@ const TodoAdded = ({ setShowTodo }) => {
         ref={focusTodoInput}
         onChange={(e) => setTodoInput(e.target.value)}
         onKeyDown={(e) =>
-          e.key === "Enter"
+          e.key === "Enter" && todoInput.length > 0
             ? (setTodosList([
                 ...todosList,
                 { id: uuid(), todoNote: todoInput, isDone: false },
