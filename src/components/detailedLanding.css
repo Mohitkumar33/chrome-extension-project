@@ -84,6 +84,10 @@
   align-items: center;
   position: relative;
 }
+.event-section:hover {
+  cursor: pointer;
+}
+
 .event-and-search {
   display: flex;
   /* align-items: center; */
@@ -112,6 +116,11 @@
 .trash-icon {
   height: 20px;
   width: 20px;
+}
+
+.pencil-icon:hover,
+.trash-icon:hover {
+  cursor: pointer;
 }
 
 .focus-given {
@@ -206,6 +215,10 @@
   background-color: rgba(0, 0, 0, 0.411);
   border-radius: 50%;
   visibility: hidden;
+}
+
+.time-toggle:hover {
+  cursor: pointer;
 }
 .time-display:hover .time-toggle {
   visibility: visible;
