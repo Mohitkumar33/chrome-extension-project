@@ -8,24 +8,75 @@ const DisplayEvents = ({ today }) => {
     const fetchDate = dateOnly.split("-").reverse().join("-");
     return fetchDate;
   };
+  const daysHoursMin = (date, eventDateTime) => {
+    const formattedDate = date.toLocaleString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const ans = formattedDate.split(",")[0].split("/");
+    const currentDay = Number(ans[0]);
+    const currentMonth = Number(ans[1]);
+    const currentYear = Number(ans[2]);
 
-  //   const formattedDate = today.toLocaleString("en-GB", {
-  //     day: "2-digit",
-  //     month: "2-digit",
-  //     year: "numeric",
-  //     hour: "2-digit",
-  //     minute: "2-digit",
-  //   });
-  //   const fetchCurrentDate = () => {};
+    const ans2 = formattedDate.split(",")[1].split(":");
+    const currentHour = Number(ans2[0]);
+    const currenMin = Number(ans2[1]);
+
+    const eventDate = eventDateTime.slice(0, 10).split("-").reverse();
+    const eventDay = Number(eventDate[0]);
+    const eventMonth = Number(eventDate[1]);
+    const eventYear = Number(eventDate[2]);
+
+    const eventTime = eventDateTime.slice(11, eventDateTime.length).split(":");
+    const eventHours = Number(eventTime[0]);
+    const eventMin = Number(eventTime[1]);
+
+    function diff_hours(dt2, dt1) {
+      let diff = (dt2.getTime() - dt1.getTime()) / 1000;
+      diff /= 60 * 60;
+      return Math.round(diff);
+    }
+
+    const dt2 = new Date(currentYear, currentMonth, currentDay);
+    const dt1 = new Date(eventYear, eventMonth, eventDay);
+
+    const resultMinutes =
+      (diff_hours(dt1, dt2) + eventHours - currentHour) * 60 +
+      eventMin -
+      currenMin;
+
+    let quotient = Math.floor(resultMinutes / 1440);
+    let remainder = resultMinutes % 1440;
+
+    const daysAre = quotient;
+    const hoursAre = Math.floor(remainder / 60);
+    const minAre = remainder % 60;
+
+    return [daysAre, hoursAre, minAre];
+  };
   return (
     <div className="events-display-box">
       {events &&
         events.map((item) => {
+          const timeLeft = daysHoursMin(today, item.date);
           return (
             <div className="single-event" key={item.id}>
-              <p className="count-down">
-                3<span>Days</span> 4<span>Hours</span>7<span>Min</span>
-              </p>
+              {timeLeft[0] < 0 || timeLeft[1] < 0 || timeLeft[2] < 0 ? (
+                <p>Event already Happened</p>
+              ) : (
+                <p className="count-down">
+                  {timeLeft[0]}
+                  <span>Days</span>
+                  {timeLeft[1]}
+                  <span>Hours</span>
+                  {timeLeft[2]}
+                  <span>Min</span>
+                </p>
+              )}
+
               <p className="event-name">{item.description}</p>
               <p>Data : {dateDisplay(item.date)} </p>
               <p>Time: {item.date.slice(11, item.date.length)}</p>

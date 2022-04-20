@@ -1,26 +1,27 @@
 .events-display-box {
   display: flex;
   flex-direction: column;
-  width: 10rem;
+  width: 10.2rem;
   height: 28rem;
   background-color: rgba(0, 0, 0, 0.637);
   color: white;
-  overflow: auto;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.37);
 }
 
 .count-down {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .count-down span {
-  font-size: 1rem;
-  padding-left: 2px;
+  font-size: 0.5rem;
 }
 
 .single-event {
   margin-bottom: 2rem;
   position: relative;
-  padding-left: 2px;
+  padding-right: 1rem;
+  /* margin-right: 1rem; */
 }
 
 .single-event * {
