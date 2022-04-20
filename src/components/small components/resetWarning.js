@@ -1,7 +1,7 @@
 import "./resetWarning.css";
 import { useTodos } from "../../context/todo-context";
 const ResetWarning = ({ setResetWarning, setShowSetting, setUserEntered }) => {
-  const { setTodosList } = useTodos();
+  const { setTodosList, setEvents } = useTodos();
   return (
     <div
       className="reset-background"
@@ -22,6 +22,7 @@ const ResetWarning = ({ setResetWarning, setShowSetting, setUserEntered }) => {
             e.stopPropagation();
             localStorage.clear();
             setTodosList([]);
+            setEvents([]);
             setResetWarning(false);
             setShowSetting(false);
             setUserEntered(false);

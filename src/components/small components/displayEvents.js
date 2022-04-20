@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useTodos } from "../../context/todo-context";
 import "./displayEvents.css";
 
@@ -58,9 +59,12 @@ const DisplayEvents = ({ today }) => {
     return [daysAre, hoursAre, minAre];
   };
   const deleteEventHandler = (eventId) => {
-    const allEvents = events.filter((item) => item.id !== eventId);
-    setEvents(allEvents);
+    setEvents(events.filter((item) => item.id !== eventId));
+    // localStorage.setItem("allTheEvents", JSON.stringify(events));
   };
+  useEffect(() => {
+    localStorage.setItem("allTheEvents", JSON.stringify(events));
+  }, [events]);
   return (
     <div className="events-display-box">
       {events &&

@@ -67,6 +67,9 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
     setCurrentTime(time);
   }, 1000);
   useEffect(() => {}, [currentTime]);
+  useEffect(() => {
+    localStorage.setItem("allTheEvents", JSON.stringify(events));
+  }, [events]);
 
   const [focusMessage, setFocusMessage] = useState(
     localStorage.getItem("focusOfTheDay")

@@ -3,7 +3,11 @@ import { createContext, useContext, useState } from "react";
 const todosContext = createContext(null);
 
 const TodosProvider = ({ children }) => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(
+    localStorage.getItem("allTheEvents")
+      ? JSON.parse(localStorage.getItem("allTheEvents"))
+      : []
+  );
   const [todosList, setTodosList] = useState(
     localStorage.getItem("todoTasks")
       ? JSON.parse(localStorage.getItem("todoTasks"))
