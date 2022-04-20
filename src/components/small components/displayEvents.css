@@ -1,0 +1,59 @@
+.events-display-box {
+  display: flex;
+  flex-direction: column;
+  width: 10.2rem;
+  max-height: 28rem;
+  background-color: rgba(0, 0, 0, 0.637);
+  color: white;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.37);
+  padding-top: 0.5rem;
+}
+
+.count-down {
+  font-size: 1.3rem;
+}
+
+.count-down span {
+  font-size: 0.5rem;
+}
+
+.single-event {
+  margin-bottom: 2rem;
+  position: relative;
+  padding-right: 1rem;
+}
+
+.single-event * {
+  padding: 2px;
+}
+
+.edit-delete-event {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  right: 0.5rem;
+  top: 1rem;
+}
+
+.events-display-box::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.events-display-box::-webkit-scrollbar-track {
+  background-color: rgb(66, 65, 65);
+}
+
+.events-display-box::-webkit-scrollbar-thumb {
+  background-color: rgb(140, 150, 140);
+  border-radius: 10px;
+}
+
+.event-name {
+  margin: 5px 0px;
+  font-style: oblique;
+}
+
+.date-time {
+  font-size: 13px;
+}
