@@ -32,6 +32,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   });
   const [showTodo, setShowTodo] = useState(false);
   let today = new Date();
+  // console.log("this is today", today);
   let hours = today.getHours();
   let minutes = today.getMinutes();
   if (minutes >= 0 && minutes <= 9) {
@@ -121,7 +122,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
         />
       ) : null}
       <div className="all-events-display">
-        <DisplayEvents />
+        <DisplayEvents today={today} />
       </div>
 
       <div className="top-row">

@@ -6,7 +6,7 @@ const AddEvents = () => {
   const { events, setEvents } = useTodos();
   const [descInput, setDescInput] = useState("");
   const [dateTimeInput, setDateTimeInput] = useState("");
-  console.log(events);
+  //   console.log(events);
   return (
     <div className="enter-event-box">
       <input
