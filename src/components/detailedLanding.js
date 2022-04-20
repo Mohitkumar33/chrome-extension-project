@@ -96,15 +96,24 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
       setQuote({ quoteOfTheDay: data.content, authorOfTheQuote: data.author });
     })();
   }, []);
-  if ("geolocation" in navigator) {
-    /* geolocation is available */
-    navigator.geolocation.getCurrentPosition((position) => {
-      wheatherAddress = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c467f97d6e38e52a944241d82351da78&units=metric`;
-    });
-  } else {
-    wheatherAddress =
-      "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric";
-  }
+  useEffect(() => {}, [wheatherAddress]);
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      /* geolocation is available */
+      (async () => {
+        try {
+          navigator.geolocation.getCurrentPosition((position) => {
+            setWeatherAddress(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c467f97d6e38e52a944241d82351da78&units=metric`
+            );
+          });
+        } catch (error) {
+          console.error(error);
+        }
+      })();
+    }
+  }, []);
+
   useEffect(() => {
     (async () => {
       const { data } = await axios.get(wheatherAddress);
