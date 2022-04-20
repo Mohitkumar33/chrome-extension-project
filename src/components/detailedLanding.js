@@ -5,6 +5,8 @@ import { GoogleSearch } from "./small components/googleSearch";
 import axios from "axios";
 import { WeatherDetails } from "./small components/weatherDetails";
 import { ResetWarning } from "./small components/resetWarning";
+import { AddEvents } from "./small components/addEvents";
+import { DisplayEvents } from "./small components/displayEvents";
 
 const DetailedLanding = ({ userEntered, setUserEntered }) => {
   const [show12Hour, setShow12Hour] = useState(
@@ -118,6 +120,10 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
           setUserEntered={setUserEntered}
         />
       ) : null}
+      <div className="all-events-display">
+        <DisplayEvents />
+      </div>
+
       <div className="top-row">
         <div className="event-and-search">
           <div className="event-section">
@@ -129,6 +135,9 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
               />
             </svg>
             <p>Add Event</p>
+            <div className="events-model-set">
+              <AddEvents />
+            </div>
           </div>
           <div>
             <GoogleSearch />
