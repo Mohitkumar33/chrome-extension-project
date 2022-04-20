@@ -95,21 +95,25 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
       setQuote({ quoteOfTheDay: data.content, authorOfTheQuote: data.author });
     })();
   }, []);
-  useEffect(() => {}, [wheatherAddress]);
   useEffect(() => {
-    if ("geolocation" in navigator) {
-      /* geolocation is available */
-      (async () => {
-        try {
-          navigator.geolocation.getCurrentPosition((position) => {
-            setWeatherAddress(
-              `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c467f97d6e38e52a944241d82351da78&units=metric`
-            );
-          });
-        } catch (error) {
-          console.error(error);
-        }
-      })();
+    function success(position) {
+      console.log("success weather called");
+      setWeatherAddress(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c467f97d6e38e52a944241d82351da78&units=metric`
+      );
+    }
+    function error() {
+      console.log("error weather called");
+      setWeatherAddress(
+        "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
+      );
+    }
+    if (!navigator.geolocation) {
+      setWeatherAddress(
+        "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
+      );
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
     }
   }, []);
 
