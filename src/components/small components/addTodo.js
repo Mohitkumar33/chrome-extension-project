@@ -48,7 +48,7 @@ const AddTodo = ({ setShowTodo }) => {
             // ref={(input) => (input ? input.focus() : null)} // focus is coming on input but we are unable to edit any other input on the screen
             value={todoInput}
             onChange={(e) => setTodoInput(e.target.value)}
-            onKeyPress={(e) =>
+            onKeyDown={(e) =>
               e.key === "Enter"
                 ? (setTodosList([
                     ...todosList,

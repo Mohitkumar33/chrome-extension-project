@@ -84,6 +84,10 @@
   align-items: center;
   position: relative;
 }
+.event-section:hover {
+  cursor: pointer;
+}
+
 .event-and-search {
   display: flex;
   /* align-items: center; */
@@ -112,6 +116,11 @@
 .trash-icon {
   height: 20px;
   width: 20px;
+}
+
+.pencil-icon:hover,
+.trash-icon:hover {
+  cursor: pointer;
 }
 
 .focus-given {
@@ -207,6 +216,10 @@
   border-radius: 50%;
   visibility: hidden;
 }
+
+.time-toggle:hover {
+  cursor: pointer;
+}
 .time-display:hover .time-toggle {
   visibility: visible;
 }
@@ -220,4 +233,43 @@
   position: absolute;
   left: 0;
   top: 4rem;
+}
+
+.globe-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.icon-and-weatherinput {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  display: none;
+
+  padding-bottom: 5px;
+}
+
+.weather-location-input {
+  background-color: transparent;
+  border: transparent;
+  border-bottom: 1px solid white;
+  caret-color: white;
+  color: white;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  width: 9rem;
+  outline: none;
+  font-size: 1rem;
+}
+.weather-location-input::placeholder {
+  color: white;
+  padding-left: 5px;
+}
+
+.all-weather-input {
+  height: 4.3rem;
+}
+
+.all-weather-input:hover .icon-and-weatherinput {
+  display: block;
 }

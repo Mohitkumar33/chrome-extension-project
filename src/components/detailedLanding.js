@@ -10,6 +10,10 @@ import { DisplayEvents } from "./small components/displayEvents";
 import { useTodos } from "../context/todo-context";
 
 const DetailedLanding = ({ userEntered, setUserEntered }) => {
+  const [locationInput, setLocationInput] = useState("");
+  const [wheatherAddress, setWeatherAddress] = useState(
+    "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
+  );
   const { events } = useTodos();
   const [show12Hour, setShow12Hour] = useState(
     localStorage.getItem("amOrPm") === "true" ? true : false
@@ -70,7 +74,6 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   useEffect(() => {
     localStorage.setItem("allTheEvents", JSON.stringify(events));
   }, [events]);
-
   const [focusMessage, setFocusMessage] = useState(
     localStorage.getItem("focusOfTheDay")
       ? localStorage.getItem("focusOfTheDay")
@@ -93,10 +96,28 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
     })();
   }, []);
   useEffect(() => {
-    (async () => {
-      const { data } = await axios.get(
+    function success(position) {
+      setWeatherAddress(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c467f97d6e38e52a944241d82351da78&units=metric`
+      );
+    }
+    function error() {
+      setWeatherAddress(
         "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
       );
+    }
+    if (!navigator.geolocation) {
+      setWeatherAddress(
+        "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
+      );
+    } else {
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get(wheatherAddress);
       setWeatherInfo({
         currentTemp: data.main.temp,
         city: data.name,
@@ -108,7 +129,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
         humidity: data.main.humidity,
       });
     })();
-  }, []);
+  }, [wheatherAddress]);
   let greetingMsg = "";
   if (hours >= 5 && hours < 12) {
     greetingMsg = "Good Morning";
@@ -156,27 +177,66 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
             <GoogleSearch />
           </div>
         </div>
-
-        <div
-          className="all-weather"
-          onClick={() => setShowWeather((prev) => !prev)}
-        >
-          <div>
-            <img
-              src={`https://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
-              alt={weatherInfo.weatherDesc}
-              className="weather-icon"
+        <div className="all-weather-input">
+          <div className="icon-and-weatherinput">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="globe-icon"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <input
+              type="text"
+              placeholder="Enter Location"
+              className="weather-location-input"
+              value={locationInput}
+              onChange={(e) => setLocationInput(e.target.value)}
+              onKeyDown={(e) =>
+                e.key === "Enter"
+                  ? setWeatherAddress(
+                      `https://api.openweathermap.org/data/2.5/weather?q=${locationInput}&APPID=c467f97d6e38e52a944241d82351da78&units=metric`
+                    )
+                  : ""
+              }
             />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              style={{ fill: "white" }}
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M13 4.069V2h-2v2.069A8.01 8.01 0 0 0 4.069 11H2v2h2.069A8.008 8.008 0 0 0 11 19.931V22h2v-2.069A8.007 8.007 0 0 0 19.931 13H22v-2h-2.069A8.008 8.008 0 0 0 13 4.069zM12 18c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6z"></path>
+            </svg>
           </div>
-          <div className="city-temp">
-            <div>{weatherInfo.currentTemp}°C</div>
-            <div>{weatherInfo.city}</div>
-          </div>
-          {showWeather ? (
-            <div className="weather-indepth">
-              <WeatherDetails weatherInfo={weatherInfo} />
+          <div
+            className="all-weather"
+            onClick={() => setShowWeather((prev) => !prev)}
+          >
+            <div>
+              <img
+                src={`https://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
+                alt={weatherInfo.weatherDesc}
+                className="weather-icon"
+              />
             </div>
-          ) : null}
+            <div className="city-temp">
+              <div>{weatherInfo.currentTemp}°C</div>
+              <div>{weatherInfo.city}</div>
+            </div>
+
+            {showWeather ? (
+              <div className="weather-indepth">
+                <WeatherDetails weatherInfo={weatherInfo} />
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
       <div className="time-and-focus">
@@ -228,7 +288,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
               // ref={(input) => (input ? input.focus() : null)}
               value={focusMessage}
               onChange={(e) => setFocusMessage(e.target.value)}
-              onKeyPress={(e) =>
+              onKeyDown={(e) =>
                 e.key === "Enter"
                   ? (setFinalMessage(focusMessage),
                     localStorage.setItem("focusOfTheDay", focusMessage))
