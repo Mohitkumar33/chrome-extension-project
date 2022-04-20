@@ -7,6 +7,7 @@
   color: white;
   overflow-y: auto;
   border: 1px solid rgba(255, 255, 255, 0.37);
+  padding-top: 0.5rem;
 }
 
 .count-down {
@@ -52,4 +53,8 @@
 .event-name {
   margin: 5px 0px;
   font-style: oblique;
+}
+
+.date-time {
+  font-size: 13px;
 }

@@ -57,6 +57,10 @@ const DisplayEvents = ({ today }) => {
 
     return [daysAre, hoursAre, minAre];
   };
+  const deleteEventHandler = (eventId) => {
+    const allEvents = events.filter((item) => item.id !== eventId);
+    setEvents(allEvents);
+  };
   return (
     <div className="events-display-box">
       {events &&
@@ -78,8 +82,10 @@ const DisplayEvents = ({ today }) => {
               )}
 
               <p className="event-name">{item.description}</p>
-              <p>Data : {dateDisplay(item.date)} </p>
-              <p>Time: {item.date.slice(11, item.date.length)}</p>
+              <p className="date-time">Data : {dateDisplay(item.date)} </p>
+              <p className="date-time">
+                Time: {item.date.slice(11, item.date.length)}
+              </p>
               <div className="edit-delete-event">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -99,6 +105,7 @@ const DisplayEvents = ({ today }) => {
                   className="delete-event"
                   viewBox="0 0 20 20"
                   fill="currentColor"
+                  onClick={() => deleteEventHandler(item.id)}
                 >
                   <path
                     fillRule="evenodd"

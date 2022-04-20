@@ -7,11 +7,14 @@ import { WeatherDetails } from "./small components/weatherDetails";
 import { ResetWarning } from "./small components/resetWarning";
 import { AddEvents } from "./small components/addEvents";
 import { DisplayEvents } from "./small components/displayEvents";
+import { useTodos } from "../context/todo-context";
 
 const DetailedLanding = ({ userEntered, setUserEntered }) => {
+  const { events } = useTodos();
   const [show12Hour, setShow12Hour] = useState(
     localStorage.getItem("amOrPm") === "true" ? true : false
   );
+  const [showCreateEvent, setShowCreateEvent] = useState(false);
 
   const [showSetting, setShowSetting] = useState(false);
   const [resetWarning, setResetWarning] = useState(false);
@@ -32,7 +35,6 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   });
   const [showTodo, setShowTodo] = useState(false);
   let today = new Date();
-  // console.log("this is today", today);
   let hours = today.getHours();
   let minutes = today.getMinutes();
   if (minutes >= 0 && minutes <= 9) {
@@ -121,13 +123,18 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
           setUserEntered={setUserEntered}
         />
       ) : null}
-      <div className="all-events-display">
-        <DisplayEvents today={today} />
-      </div>
+      {events.length > 0 && (
+        <div className="all-events-display">
+          <DisplayEvents today={today} />
+        </div>
+      )}
 
       <div className="top-row">
         <div className="event-and-search">
-          <div className="event-section">
+          <div
+            className="event-section"
+            onClick={() => setShowCreateEvent((prev) => !prev)}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" className="plus-icon">
               <path
                 fillRule="evenodd"
@@ -136,9 +143,11 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
               />
             </svg>
             <p>Add Event</p>
-            <div className="events-model-set">
-              <AddEvents />
-            </div>
+            {showCreateEvent && (
+              <div className="events-model-set">
+                <AddEvents setShowCreateEvent={setShowCreateEvent} />
+              </div>
+            )}
           </div>
           <div>
             <GoogleSearch />

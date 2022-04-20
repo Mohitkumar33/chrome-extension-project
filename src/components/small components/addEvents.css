@@ -8,6 +8,7 @@
   justify-content: center;
   flex-direction: column;
   color: white;
+  position: relative;
 }
 .enter-event-box * {
   padding: 0.5px;
@@ -38,4 +39,12 @@
   border-radius: 15px;
   margin: auto;
   margin-top: 10px;
+}
+
+.close-create-event {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  top: 0;
+  right: 0;
 }
