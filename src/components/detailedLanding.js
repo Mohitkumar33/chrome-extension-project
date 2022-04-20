@@ -74,7 +74,6 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   useEffect(() => {
     localStorage.setItem("allTheEvents", JSON.stringify(events));
   }, [events]);
-  // let wheatherAddress = "";
   const [focusMessage, setFocusMessage] = useState(
     localStorage.getItem("focusOfTheDay")
       ? localStorage.getItem("focusOfTheDay")
