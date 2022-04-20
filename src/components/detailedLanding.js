@@ -106,12 +106,17 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
         "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
       );
     }
+
+    const options = {
+      enableHighAccuracy: true,
+    };
+
     if (!navigator.geolocation) {
       setWeatherAddress(
         "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
       );
     } else {
-      navigator.geolocation.getCurrentPosition(success, error);
+      navigator.geolocation.getCurrentPosition(success, error, options);
     }
   }, []);
 

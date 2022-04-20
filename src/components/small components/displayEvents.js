@@ -86,7 +86,7 @@ const DisplayEvents = ({ today }) => {
               )}
 
               <p className="event-name">{item.description}</p>
-              <p className="date-time">Data : {dateDisplay(item.date)} </p>
+              <p className="date-time">Date : {dateDisplay(item.date)} </p>
               <p className="date-time">
                 Time: {item.date.slice(11, item.date.length)}
               </p>
