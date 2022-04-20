@@ -288,7 +288,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
               // ref={(input) => (input ? input.focus() : null)}
               value={focusMessage}
               onChange={(e) => setFocusMessage(e.target.value)}
-              onKeyPress={(e) =>
+              onKeyDown={(e) =>
                 e.key === "Enter"
                   ? (setFinalMessage(focusMessage),
                     localStorage.setItem("focusOfTheDay", focusMessage))
