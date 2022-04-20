@@ -10,6 +10,10 @@ import { DisplayEvents } from "./small components/displayEvents";
 import { useTodos } from "../context/todo-context";
 
 const DetailedLanding = ({ userEntered, setUserEntered }) => {
+  const [locationInput, setLocationInput] = useState("");
+  const [wheatherAddress, setWeatherAddress] = useState(
+    "https://api.openweathermap.org/data/2.5/weather?q=bengaluru&APPID=c467f97d6e38e52a944241d82351da78&units=metric"
+  );
   const { events } = useTodos();
   const [show12Hour, setShow12Hour] = useState(
     localStorage.getItem("amOrPm") === "true" ? true : false
@@ -70,7 +74,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   useEffect(() => {
     localStorage.setItem("allTheEvents", JSON.stringify(events));
   }, [events]);
-  let wheatherAddress = "";
+  // let wheatherAddress = "";
   const [focusMessage, setFocusMessage] = useState(
     localStorage.getItem("focusOfTheDay")
       ? localStorage.getItem("focusOfTheDay")
@@ -181,6 +185,15 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
               type="text"
               placeholder="Enter Location"
               className="weather-location-input"
+              value={locationInput}
+              onChange={(e) => setLocationInput(e.target.value)}
+              onKeyDown={(e) =>
+                e.key === "Enter"
+                  ? setWeatherAddress(
+                      `https://api.openweathermap.org/data/2.5/weather?q=${locationInput}&APPID=c467f97d6e38e52a944241d82351da78&units=metric`
+                    )
+                  : ""
+              }
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
