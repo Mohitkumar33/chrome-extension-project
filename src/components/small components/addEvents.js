@@ -24,6 +24,9 @@ const AddEvents = ({ setShowCreateEvent }) => {
         onChange={(e) => setDateTimeInput(e.target.value)}
       />
       <button
+        disabled={
+          descInput.length > 0 && dateTimeInput.length > 0 ? false : true
+        }
         onClick={() => {
           setEvents([
             ...events,
