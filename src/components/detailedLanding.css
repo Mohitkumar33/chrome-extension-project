@@ -221,3 +221,42 @@
   left: 0;
   top: 4rem;
 }
+
+.globe-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.icon-and-weatherinput {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  display: none;
+
+  padding-bottom: 5px;
+}
+
+.weather-location-input {
+  background-color: transparent;
+  border: transparent;
+  border-bottom: 1px solid white;
+  caret-color: white;
+  color: white;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  width: 9rem;
+  outline: none;
+  font-size: 1rem;
+}
+.weather-location-input::placeholder {
+  color: white;
+  padding-left: 5px;
+}
+
+.all-weather-input {
+  height: 4.3rem;
+}
+
+.all-weather-input:hover .icon-and-weatherinput {
+  display: block;
+}
