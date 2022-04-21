@@ -382,7 +382,6 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
           {showSetting ? (
             <div className="reset-all">
               <button
-                // className="reset-all"
                 style={{ borderBottom: "1px solid white" }}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -391,12 +390,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
               >
                 Reset All
               </button>
-              <button
-                // className="reset-all"
-                onClick={() => setUserEntered(false)}
-              >
-                Change Name
-              </button>
+              <button onClick={() => setUserEntered(false)}>Change Name</button>
             </div>
           ) : null}
         </div>
