@@ -197,14 +197,25 @@
 
 .reset-all {
   position: absolute;
-  bottom: 2.6rem;
+  bottom: 3rem;
   left: 2rem;
-  width: 5rem;
-  height: 1.8rem;
+  width: 7rem;
+  height: 3.6rem;
   background-color: rgba(0, 0, 0, 0.637);
   color: white;
   border-radius: 8px;
   border: transparent;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reset-all button {
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  padding: 5px;
 }
 
 .time-toggle {
