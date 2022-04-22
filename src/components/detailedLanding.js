@@ -226,11 +226,15 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
             onClick={() => setShowWeather((prev) => !prev)}
           >
             <div>
-              <img
-                src={`https://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
-                alt={weatherInfo.weatherDesc}
-                className="weather-icon"
-              />
+              {weatherInfo.weatherIcon !== "" ? (
+                <img
+                  src={`https://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
+                  alt={weatherInfo.weatherDesc}
+                  className="weather-icon"
+                />
+              ) : (
+                <p>loading</p>
+              )}
             </div>
             <div className="city-temp">
               <div>{weatherInfo.currentTemp}°C</div>
