@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useTodos } from "../../context/todo-context";
 import "./displayEvents.css";
 
@@ -69,9 +68,9 @@ const DisplayEvents = ({ today }) => {
     setEvents(events.filter((item) => item.id !== eventId));
     // localStorage.setItem("allTheEvents", JSON.stringify(events));
   };
-  useEffect(() => {
-    localStorage.setItem("allTheEvents", JSON.stringify(events));
-  }, [events]);
+  // useEffect(() => {
+  localStorage.setItem("allTheEvents", JSON.stringify(events));
+  // }, [events]);
   return (
     <div className="events-display-box">
       {events &&

@@ -1,14 +1,14 @@
 import { useTodos } from "../../context/todo-context";
 import { v4 as uuid } from "uuid";
 import "./addEvents.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 const AddEvents = ({ setShowCreateEvent }) => {
   const { events, setEvents } = useTodos();
   const [descInput, setDescInput] = useState("");
   const [dateTimeInput, setDateTimeInput] = useState("");
-  useEffect(() => {
-    localStorage.setItem("allTheEvents", JSON.stringify(events));
-  }, [events]);
+  // useEffect(() => {
+  localStorage.setItem("allTheEvents", JSON.stringify(events));
+  // }, [events]);
   return (
     <div className="enter-event-box" onClick={(e) => e.stopPropagation()}>
       <input

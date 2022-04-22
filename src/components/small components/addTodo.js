@@ -7,9 +7,9 @@ const AddTodo = ({ setShowTodo }) => {
   const [todoInput, setTodoInput] = useState("");
   // const searchInput = useRef();
   const focusTodoInput = useRef();
-  useEffect(() => {
-    localStorage.setItem("todoTasks", JSON.stringify(todosList));
-  }, [todosList]);
+  // useEffect(() => {
+  localStorage.setItem("todoTasks", JSON.stringify(todosList));
+  // }, [todosList]);
   useEffect(() => {
     if (focusTodoInput.current) focusTodoInput.current.focus();
   }, [focusTodoInput]);
