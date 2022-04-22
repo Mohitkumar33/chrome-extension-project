@@ -70,10 +70,10 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
     setTwelveHourTime(time12Hour);
     setCurrentTime(time);
   }, 1000);
-  useEffect(() => {}, [currentTime]);
-  useEffect(() => {
-    localStorage.setItem("allTheEvents", JSON.stringify(events));
-  }, [events]);
+  // useEffect(() => {}, [currentTime]);
+  // useEffect(() => {
+  localStorage.setItem("allTheEvents", JSON.stringify(events));
+  // }, [events]);
   const [focusMessage, setFocusMessage] = useState(
     localStorage.getItem("focusOfTheDay")
       ? localStorage.getItem("focusOfTheDay")
@@ -143,6 +143,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   } else {
     greetingMsg = "Good Evening";
   }
+
   return (
     <div className="detailed-landing">
       {resetWarning ? (
@@ -225,11 +226,15 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
             onClick={() => setShowWeather((prev) => !prev)}
           >
             <div>
-              <img
-                src={`https://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
-                alt={weatherInfo.weatherDesc}
-                className="weather-icon"
-              />
+              {weatherInfo.weatherIcon !== "" ? (
+                <img
+                  src={`https://openweathermap.org/img/wn/${weatherInfo.weatherIcon}@2x.png`}
+                  alt={weatherInfo.weatherDesc}
+                  className="weather-icon"
+                />
+              ) : (
+                <p>loading</p>
+              )}
             </div>
             <div className="city-temp">
               <div>{weatherInfo.currentTemp}°C</div>

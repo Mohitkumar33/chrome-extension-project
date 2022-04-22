@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useTodos } from "../../context/todo-context";
 import "./displayEvents.css";
 
@@ -9,6 +8,13 @@ const DisplayEvents = ({ today }) => {
     const fetchDate = dateOnly.split("-").reverse().join("-");
     return fetchDate;
   };
+
+  events.sort((a, b) => {
+    const date1 = new Date(a.date);
+    const date2 = new Date(b.date);
+    return date1.getTime() - date2.getTime();
+  });
+
   const daysHoursMin = (date, eventDateTime) => {
     const formattedDate = date.toLocaleString("en-GB", {
       day: "2-digit",
@@ -62,9 +68,9 @@ const DisplayEvents = ({ today }) => {
     setEvents(events.filter((item) => item.id !== eventId));
     // localStorage.setItem("allTheEvents", JSON.stringify(events));
   };
-  useEffect(() => {
-    localStorage.setItem("allTheEvents", JSON.stringify(events));
-  }, [events]);
+  // useEffect(() => {
+  localStorage.setItem("allTheEvents", JSON.stringify(events));
+  // }, [events]);
   return (
     <div className="events-display-box">
       {events &&

@@ -6,9 +6,12 @@ const AddEvents = ({ setShowCreateEvent }) => {
   const { events, setEvents } = useTodos();
   const [descInput, setDescInput] = useState("");
   const [dateTimeInput, setDateTimeInput] = useState("");
-  useEffect(() => {
-    localStorage.setItem("allTheEvents", JSON.stringify(events));
-  }, [events]);
+
+  useEffect(() => {}, [events]);
+
+  // useEffect(() => {
+  localStorage.setItem("allTheEvents", JSON.stringify(events));
+  // }, [events]);
   return (
     <div className="enter-event-box" onClick={(e) => e.stopPropagation()}>
       <input
@@ -32,6 +35,7 @@ const AddEvents = ({ setShowCreateEvent }) => {
             ...events,
             { id: uuid(), description: descInput, date: dateTimeInput },
           ]);
+
           localStorage.setItem("allTheEvents", JSON.stringify(events));
           setDescInput("");
           setDateTimeInput("");
