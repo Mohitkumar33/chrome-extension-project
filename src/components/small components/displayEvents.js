@@ -8,13 +8,13 @@ const DisplayEvents = ({ today }) => {
     const fetchDate = dateOnly.split("-").reverse().join("-");
     return fetchDate;
   };
-  setEvents(
-    events.sort((a, b) => {
-      const date1 = new Date(a.date);
-      const date2 = new Date(b.date);
-      return date1.getTime() - date2.getTime();
-    })
-  );
+
+  events.sort((a, b) => {
+    const date1 = new Date(a.date);
+    const date2 = new Date(b.date);
+    return date1.getTime() - date2.getTime();
+  });
+
   const daysHoursMin = (date, eventDateTime) => {
     const formattedDate = date.toLocaleString("en-GB", {
       day: "2-digit",

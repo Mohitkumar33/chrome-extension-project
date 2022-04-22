@@ -1,11 +1,14 @@
 import { useTodos } from "../../context/todo-context";
 import { v4 as uuid } from "uuid";
 import "./addEvents.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const AddEvents = ({ setShowCreateEvent }) => {
   const { events, setEvents } = useTodos();
   const [descInput, setDescInput] = useState("");
   const [dateTimeInput, setDateTimeInput] = useState("");
+
+  useEffect(() => {}, [events]);
+
   // useEffect(() => {
   localStorage.setItem("allTheEvents", JSON.stringify(events));
   // }, [events]);
@@ -32,6 +35,7 @@ const AddEvents = ({ setShowCreateEvent }) => {
             ...events,
             { id: uuid(), description: descInput, date: dateTimeInput },
           ]);
+
           localStorage.setItem("allTheEvents", JSON.stringify(events));
           setDescInput("");
           setDateTimeInput("");

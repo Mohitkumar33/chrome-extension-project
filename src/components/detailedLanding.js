@@ -143,6 +143,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   } else {
     greetingMsg = "Good Evening";
   }
+
   return (
     <div className="detailed-landing">
       {resetWarning ? (
