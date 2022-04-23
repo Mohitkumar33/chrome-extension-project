@@ -16,9 +16,9 @@ const TodoAdded = ({ setShowTodo }) => {
       )
     );
   };
-  // useEffect(() => {
+  useEffect(() => {
   localStorage.setItem("todoTasks", JSON.stringify(todosList));
-  // }, [todosList]);
+  }, [todosList]);
   useEffect(() => {
     if (focusTodoInput.current) focusTodoInput.current.focus();
   }, [focusTodoInput]);
