@@ -109,6 +109,8 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
 
     const options = {
       enableHighAccuracy: true,
+      maximumAge: 30000,
+      timeout: 27000,
     };
 
     if (!navigator.geolocation) {
