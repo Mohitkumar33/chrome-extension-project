@@ -7,11 +7,11 @@ const AddEvents = ({ setShowCreateEvent }) => {
   const [descInput, setDescInput] = useState("");
   const [dateTimeInput, setDateTimeInput] = useState("");
 
-  useEffect(() => {}, [events]);
+  // useEffect(() => {}, [events]);
 
-  // useEffect(() => {
+  useEffect(() => {
   localStorage.setItem("allTheEvents", JSON.stringify(events));
-  // }, [events]);
+  }, [events]);
   return (
     <div className="enter-event-box" onClick={(e) => e.stopPropagation()}>
       <input
