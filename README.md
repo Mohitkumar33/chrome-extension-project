@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Achieve Goal | Browser Extension
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Live Link](https://focus-extension.netlify.app/)
 
-## Available Scripts
+https://user-images.githubusercontent.com/46507817/166147331-b88ad079-a584-43a5-8687-f3b046ab703e.mp4
 
-In the project directory, you can run:
+_Achieve Goal_ is an extension available on Firefox and Chrome.That makes you motivated and focused towards your goal. Help you to complete the task and attend the events on time.
 
-### `npm start`
+## Tech Stack used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. HTML
+2. CSS
+3. JavaScript
+4. React.js
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## How to run the project locally
 
-### `npm test`
+**Step 1**. Firstly fork the repository.  
+**Step 2**. Now open that repo in your Editor(Vs code)  
+**Step 3**. Now to run the project install yarn in the project root folder using the command `npm install yarn`. Because backend is using yarn package.  
+**Step 4**. Now run the project using the command `npm start`  
+**Finally**. Project will run on your local system
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## What's Features?
 
-### `npm run build`
+Achieve your goal by just using the chrome extension "Achieve Goal". 
+https://focus-extension.netlify.app/
+Contains features like 
+1. Main focus of the day
+2. Todo list
+3. Add events (eg birthday party after 3 day) a countdown starts after adding the event.(in sorted order, the event coming first will be shown first)
+4. Motivation Quote on every refresh of the tab.
+5. Beautiful images on the background which looks cool to eyes.
+6. User's location weather if user gives the permission.
+7. User can check other city, state or country weather by hovering over the weather feature.
+8. User can Reset everything and can make a new start from entering name.
+9. Greeting to the user Good mourning, Good afternoon, Good evening.
+10. 24 hour and 12 hour time format
+11. Appreciation message on completing the main task of the day.
+12. Google search feature to search interesting stuff on internet.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Conclusion.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This extension will provide the user to boost their productivity whenever they work on laptop. Keep them focused towards their goal. and also that motivation quote makes them energize.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Connect With Me
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Twitter – [@aggarwal*mohit*](https://twitter.com/aggarwal_mohit_)
+- LinkedIn – [/mohit-kumar-aggarwal/](https://www.linkedin.com/in/mohit-kumar-aggarwal/)
+- Other Links – [/mohitkumar.in/](https://mohitkumar.in/)
