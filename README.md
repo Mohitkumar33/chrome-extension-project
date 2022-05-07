@@ -16,9 +16,8 @@ _Achieve Goal_ is an extension available on Firefox and Chrome.That makes you mo
 ## How to run the project locally
 
 **Step 1**. Firstly fork the repository.  
-**Step 2**. Now open that repo in your Editor(Vs code)  
-**Step 3**. Now to run the project install yarn in the project root folder using the command `npm install yarn`. Because backend is using yarn package.  
-**Step 4**. Now run the project using the command `npm start`  
+**Step 2**. Now open that repo in your Editor(Vs code) 
+**Step 3**. Now run the project using the command `npm start`  
 **Finally**. Project will run on your local system
 
 ## What's Features?
