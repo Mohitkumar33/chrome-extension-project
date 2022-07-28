@@ -8,7 +8,7 @@ _Achieve Goal_ is an extension available on Firefox and Chrome.That makes you mo
 
 ## Tech Stack used
 
-1. HTML
+1. HT
 2. CSS
 3. JavaScript
 4. React.js
