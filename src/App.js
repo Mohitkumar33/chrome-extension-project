@@ -13,18 +13,21 @@ const App = () => {
   const getImage = async () => {
     try {
       const { data } = await axios.get(
-        "https://api.api-ninjas.com/v1/randomimage?category=nature&width=1366&height=768",
+        "https://api.unsplash.com/photos/random",
         {
           headers: {
-            "x-api-key": "0LLjkvq9QRy5XkpSNKV9Uw==xfSZbIKj8hWJZyyp",
+            Authorization: `Client-ID KmNbQYQnZbSoFXoEZe-L9fY129KHmNzQzg11NYepopA`,
+          },
+          params: {
+            query: "nature",
+            w: 1366,
+            h: 768,
           },
         }
       );
-      console.log(data, "image data hai");
-      let finalString = "data:image/png;base64," + data;
-      setImage(finalString);
+      setImage(data.urls.regular);
     } catch (error) {
-      console.error(error);
+      console.error("Unsplash API error:", error);
     }
   };
 
