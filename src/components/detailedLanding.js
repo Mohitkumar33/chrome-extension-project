@@ -1,7 +1,7 @@
 import "./detailedLanding.css";
 import { useEffect, useState } from "react";
 import { Todo } from "./small components/todo";
-import { GoogleSearch } from "./small components/googleSearch";
+// import { GoogleSearch } from "./small components/googleSearch";
 import axios from "axios";
 import { WeatherDetails } from "./small components/weatherDetails";
 import { ResetWarning } from "./small components/resetWarning";
@@ -89,10 +89,11 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
   );
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get(
-        "https://api.quotable.io/random?maxLength=50"
-      );
-      setQuote({ quoteOfTheDay: data.content, authorOfTheQuote: data.author });
+      const { data } = await axios.get("https://api.adviceslip.com/advice");
+      setQuote({
+        quoteOfTheDay: data.slip.advice,
+        authorOfTheQuote: "💡 Wise Words",
+      });
     })();
   }, []);
   useEffect(() => {
@@ -179,9 +180,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
               </div>
             )}
           </div>
-          <div>
-            <GoogleSearch />
-          </div>
+          <div>{/* <GoogleSearch /> */}</div>
         </div>
         <div className="all-weather-input">
           <div className="icon-and-weatherinput">
@@ -400,7 +399,7 @@ const DetailedLanding = ({ userEntered, setUserEntered }) => {
           ) : null}
         </div>
         <div className="quote-section">
-          <p>{quote.quoteOfTheDay}</p>
+          <p className="quote-itself">{quote.quoteOfTheDay}</p>
           <p className="quote-author">{quote.authorOfTheQuote}</p>
         </div>
         <div className="todo-dialog">

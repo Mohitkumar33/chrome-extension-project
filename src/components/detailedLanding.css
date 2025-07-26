@@ -40,6 +40,10 @@
   flex-direction: column;
   align-items: center;
 }
+
+.quote-itself {
+  font-size: 1.2rem;
+}
 .quote-section:hover * {
   visibility: visible;
 }
